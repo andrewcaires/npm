@@ -1,6 +1,6 @@
 [![npm](https://img.shields.io/npm/v/@andrewcaires/utils.js?color=blue&logo=npm)](https://www.npmjs.com/package/@andrewcaires/utils.js)
 [![downloads](https://img.shields.io/npm/dt/@andrewcaires/utils.js?color=blue)](https://www.npmjs.com/package/@andrewcaires/utils.js)
-[![size](https://img.shields.io/bundlephobia/min/@andrewcaires/utils.js?color=blue)](https://github.com/andrewcaires/npm/tree/main/utils.js)
+[![size](https://img.shields.io/bundlephobia/min/@andrewcaires/utils.js?color=blue)](https://www.npmjs.com/package/@andrewcaires/utils.js)
 [![license](https://img.shields.io/github/license/andrewcaires/npm?color=blue)](https://github.com/andrewcaires/npm/blob/main/LICENSE)
 
 # utils.js
