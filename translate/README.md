@@ -1,6 +1,6 @@
 [![npm](https://img.shields.io/npm/v/@andrewcaires/translate?color=blue&logo=npm)](https://www.npmjs.com/package/@andrewcaires/translate)
 [![downloads](https://img.shields.io/npm/dt/@andrewcaires/translate?color=blue)](https://www.npmjs.com/package/@andrewcaires/translate)
-[![size](https://img.shields.io/bundlephobia/min/@andrewcaires/translate?color=blue)](https://github.com/andrewcaires/npm/tree/main/translate)
+[![size](https://img.shields.io/bundlephobia/min/@andrewcaires/translate?color=blue)](https://www.npmjs.com/package/@andrewcaires/translate)
 [![license](https://img.shields.io/github/license/andrewcaires/npm?color=blue)](https://github.com/andrewcaires/npm/blob/main/LICENSE)
 
 # Translate

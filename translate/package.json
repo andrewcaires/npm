@@ -1,6 +1,6 @@
 {
   "name": "@andrewcaires/translate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Plugin for translation",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/andrewcaires/npm/issues"
   },
-  "homepage": "https://github.com/andrewcaires/npm#readme",
+  "homepage": "https://github.com/andrewcaires/npm/tree/main/translate#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.0",
     "@rollup/plugin-typescript": "^8.3.0",
