@@ -1,10 +1,10 @@
 import commonjs from "@rollup/plugin-commonjs";
-import typescript from '@rollup/plugin-typescript';
+import typescript from "@rollup/plugin-typescript";
 import { rmSync } from "fs";
 import dts from "rollup-plugin-dts";
-import { terser } from 'rollup-plugin-terser';
+import { terser } from "rollup-plugin-terser";
 
-import pkg from '../package.json';
+import pkg from "../package.json";
 
 const banner = `/*!
  * ${pkg.name} v${pkg.version}
@@ -13,43 +13,42 @@ const banner = `/*!
  */
 `;
 
-const name = 'Api';
-const input = 'src/index.ts';
+const name = "Api";
 const external = [
-  '@andrewcaires/utils.js',
-  'cors',
-  'crypto-js',
-  'dotenv',
-  'express',
-  'fs',
-  'http',
-  'https',
-  'joi',
-  'jsonwebtoken',
-  'mime-types',
-  'multer',
-  'net',
-  'path',
-  'sequelize',
-  'vue',
-  'ws',
+  "@andrewcaires/utils.js",
+  "cors",
+  "crypto-js",
+  "dotenv",
+  "express",
+  "fs",
+  "http",
+  "https",
+  "joi",
+  "jsonwebtoken",
+  "mime-types",
+  "multer",
+  "net",
+  "path",
+  "sequelize",
+  "vue",
+  "ws",
 ];
 
 const output = (formats) => {
 
   return Object.keys(formats).map((format) => {
 
-    return { name, exports: 'named', file: formats[format], format };
+    return { name, exports: "named", file: formats[format], format };
   });
-}
+};
 
 export default [
   {
-    input,
     external,
+    input: "src/index.ts",
     output: output({ cjs: pkg.main, es: pkg.module }),
     plugins: [
-      typescript({ module: 'esnext', tsconfig: './tsconfig.json' }),
+      typescript({ module: "esnext", tsconfig: "./tsconfig.json" }),
       commonjs({ extensions: [".js", ".ts"] }),
       terser({ format: { comments: false } }),
       { renderChunk: async (code) => banner + code },
