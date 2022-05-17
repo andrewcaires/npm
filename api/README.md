@@ -1,32 +1,30 @@
-[![npm](https://img.shields.io/npm/v/@andrewcaires/sample-api?color=blue&logo=npm)](https://www.npmjs.com/package/@andrewcaires/sample-api)
-[![downloads](https://img.shields.io/npm/dt/@andrewcaires/sample-api?color=blue)](https://www.npmjs.com/package/@andrewcaires/sample-api)
-[![size](https://img.shields.io/github/repo-size/andrewcaires/sample-api?color=blue)](https://github.com/andrewcaires/sample-api)
-[![language](https://img.shields.io/github/languages/top/andrewcaires/sample-api?color=blue)](https://github.com/andrewcaires/sample-api)
-[![commit](https://img.shields.io/github/last-commit/andrewcaires/sample-api?color=blue&logo=github)](https://github.com/andrewcaires/sample-api)
-[![license](https://img.shields.io/github/license/andrewcaires/sample-api?color=blue)](https://github.com/andrewcaires/sample-api/blob/main/LICENSE)
+[![npm](https://img.shields.io/npm/v/@andrewcaires/api?color=blue&logo=npm)](https://www.npmjs.com/package/@andrewcaires/api)
+[![downloads](https://img.shields.io/npm/dt/@andrewcaires/api?color=blue)](https://www.npmjs.com/package/@andrewcaires/api)
+[![size](https://img.shields.io/bundlephobia/min/@andrewcaires/api?color=blue)](https://www.npmjs.com/package/@andrewcaires/api)
+[![license](https://img.shields.io/github/license/andrewcaires/npm?color=blue)](https://github.com/andrewcaires/npm/blob/main/LICENSE)
 
-# sample-api
+# API
 
 Simple api for small applications using express, jsonwebtoken, sequelize and websocket
 
 ## Installation
 
-The module is now available on npm! `npm i @andrewcaires/sample-api`
+The module is now available on npm! `npm i @andrewcaires/api`
 
 ## Example usage
 
 ```js
-import { initialize } from '@andrewcaires/sample-api';
+import { initialize } from '@andrewcaires/api';
 
 initialize();
 ```
 
 ### Links
 
-* [Docs](https://github.com/andrewcaires/sample-api#readme) _(work in progress)_
-* [GitHub](https://github.com/andrewcaires/sample-api)
-* [npm](https://www.npmjs.com/package/@andrewcaires/sample-api)
+*  [Docs](https://github.com/andrewcaires/npm/blob/main/api/README.md)
+*  [GitHub](https://github.com/andrewcaires/npm/tree/main/api)
+*  [npm](https://www.npmjs.com/package/@andrewcaires/api)
 
 ## License
 
-*  [MIT](https://github.com/andrewcaires/sample-api/blob/main/LICENSE)
+*  [MIT](https://github.com/andrewcaires/npm/blob/main/LICENSE)

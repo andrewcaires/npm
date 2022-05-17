@@ -162,12 +162,12 @@ type(); // => 'null'
 type(null); // => 'null'
 ```
 
-## Links
+### Links
 
-* [Docs](https://github.com/andrewcaires/utils.js#readme)
-* [GitHub](https://github.com/andrewcaires/utils.js)
-* [npm](https://www.npmjs.com/package/@andrewcaires/utils.js)
+*  [Docs](https://github.com/andrewcaires/npm/blob/main/utils.js/README.md)
+*  [GitHub](https://github.com/andrewcaires/npm/tree/main/utils.js)
+*  [npm](https://www.npmjs.com/package/@andrewcaires/utils.js)
 
 ## License
 
-* [MIT License](https://github.com/andrewcaires/utils.js/blob/main/LICENSE)
+*  [MIT](https://github.com/andrewcaires/npm/blob/main/LICENSE)
