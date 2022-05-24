@@ -32,7 +32,16 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     return Responses.error(res, "Invalid token");
   }
 
-  const decode: any = jwt.verify(token, crt.token);
+  let decode: any;
+
+  try {
+
+    decode = jwt.verify(token, crt.token);
+
+  } catch (error) {
+
+    return Responses.error(res, "Invalid token");
+  }
 
   if (decode && decode.id && decode.secret) {
 

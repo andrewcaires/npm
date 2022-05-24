@@ -1,5 +1,6 @@
+import { noop } from "@andrewcaires/utils.js";
 import { Request, Response } from "express";
-import { Attributes, FindOptions, Model, ModelStatic } from "sequelize";
+import { Attributes, FindOptions, Model, ModelStatic, Op } from "sequelize";
 
 import { Log } from "../helpers/Log";
 import { Responses } from "../helpers/Responses";
@@ -45,29 +46,61 @@ export class Controller<M extends Model<M>> {
         options = {};
       }
 
+      const temp = { ...options };
+
+      temp.where = temp.where ? { ...temp.where } : {};
+
       const limit = req.query.limit?.toString();
 
       if (limit) {
 
-        options.limit = parseInt(limit);
+        temp.limit = parseInt(limit);
       }
 
       const offset = req.query.offset?.toString();
 
       if (offset) {
 
-        options.offset = parseInt(offset);
+        temp.offset = parseInt(offset);
       }
 
-      const records = await this.model.findAll(options).catch((error) => {
+      const asc = req.query.asc?.toString();
+
+      if (asc) {
+
+        temp.order = [[asc, "ASC"]];
+      }
+
+      const desc = req.query.desc?.toString();
+
+      if (desc) {
+
+        temp.order = [[desc, "DESC"]];
+      }
+
+      const likes: Array<any> = [];
+
+      const search = req.query.search?.toString();
+
+      if (search) {
+
+        Object.keys(this.model.getAttributes()).forEach((value) => {
+
+          likes.push({ [value]: { [Op.like]: `%${search}%` } });
+        });
+
+        if (likes.length) {
+
+          temp.where = { ...temp.where, ...{ [Op.or]: [...likes] } };
+        }
+      }
+
+      const records = await this.model.findAll(temp).catch((error) => {
 
         Log.error(error.message, this.log + ".all");
       });
 
-      const count = await this.model.count().catch((error) => {
-
-        Log.error(error.message, this.log + ".all");
-      });
+      const count = await this.model.count(temp).catch(noop);
 
       if (records) {
 
@@ -111,9 +144,13 @@ export class Controller<M extends Model<M>> {
         options = {};
       }
 
+      const temp = { ...options };
+
+      temp.where = temp.where ? { ...temp.where } : {};
+
       const { id } = req.params;
 
-      const record = await this.model.findByPk(id, options).catch((error) => {
+      const record = await this.model.findByPk(id, temp).catch((error) => {
 
         Log.error(error.message, this.log + ".get");
       });

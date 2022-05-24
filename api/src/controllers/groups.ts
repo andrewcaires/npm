@@ -8,6 +8,7 @@ import { Responses } from "../helpers/Responses";
 import { Controller } from "../helpers/Controller";
 
 const controller = new Controller("groups", Group);
+const controller2 = new Controller("groups.route", GroupRoute);
 
 export const add = controller.add();
 
@@ -21,7 +22,7 @@ export const routesAll = async (req: Request, res: Response) => {
 
   const { id } = req.params;
 
-  const records = await GroupRoute.findAll({
+  return controller2.all({
 
     where: { groupId: id },
 
@@ -32,17 +33,11 @@ export const routesAll = async (req: Request, res: Response) => {
 
     }],
 
-  }).catch((error) => {
+  }, (records) => {
 
-    Log.error(error.message, "groups.routesAll");
-  });
+    return records.map((record) => record.route);
 
-  if (records) {
-
-    return Responses.list(res, records.map((record) => record.route));
-  }
-
-  return Responses.error(res, "Internal Server Error");
+  })(req, res);
 };
 
 export const routesSet = async (req: Request, res: Response) => {
