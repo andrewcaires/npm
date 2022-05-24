@@ -1,6 +1,6 @@
 {
   "name": "@andrewcaires/api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple api for small applications using express, jsonwebtoken, sequelize and websocket",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
