@@ -1,11 +1,11 @@
 {
   "name": "@andrewcaires/cookie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plugin for HTTP cookie",
-  "main": "dist/cookie.umd.js",
-  "module": "dist/cookie.esm.js",
-  "unpkg": "dist/cookie.min.js",
-  "types": "dist/cookie.d.ts",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "unpkg": "dist/index.min.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c build/rollup.config.js"
   },
