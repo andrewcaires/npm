@@ -1,6 +1,5 @@
 export * from "./array";
 export * from "./boolean";
-export * from "./cache";
 export * from "./color";
 export * from "./crypto";
 export * from "./date";
