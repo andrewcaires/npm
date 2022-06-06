@@ -1,5 +1,5 @@
 type forEachCallback = (value: any, key: string, object: any) => void | boolean;
-type forLoopCallback = (index: number, count: number) => void;
+type forLoopCallback = (index: number, count: number) => void | boolean;
 type forMapCallback = (value: any, key: string, object: any) => any;
 
 export const forEach = (object: any, callback: forEachCallback, thisArg?: any) => {
@@ -10,7 +10,7 @@ export const forEach = (object: any, callback: forEachCallback, thisArg?: any) =
 
     if (callback.call(thisArg, object[key], key, object) === false) {
 
-      return object;
+      break;
     }
   }
 
@@ -21,7 +21,10 @@ export const forLoop = (count: number, callback: forLoopCallback, thisArg?: any)
 
   for (let index = 1; index <= count; index++) {
 
-    callback.call(thisArg, index, count);
+    if (callback.call(thisArg, index, count) === false) {
+
+      break;
+    }
   }
 
   return count;
