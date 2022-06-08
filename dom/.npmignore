@@ -1,0 +1,24 @@
+# system
+.DS_Store
+Thumbs.db
+
+# directories
+build
+src
+node_modules
+
+# environment
+.env
+
+# npm
+.npm
+package-lock.json
+
+# vscode
+.vscode
+
+# Typescript
+tsconfig.json
+
+# ESLint
+.eslintrc.json
