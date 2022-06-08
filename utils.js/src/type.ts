@@ -1,4 +1,6 @@
-const types: { [key: string]: string } = {};
+import { TypeObjectString } from "./typedef";
+
+const types: TypeObjectString = {};
 
 export const isArray = (test: any) => type(test) == "array";
 

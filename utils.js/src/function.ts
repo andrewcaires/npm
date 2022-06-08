@@ -1,8 +1,26 @@
-type forEachCallback = (value: any, key: string, object: any) => void | boolean;
-type forLoopCallback = (index: number, count: number) => void | boolean;
-type forMapCallback = (value: any, key: string, object: any) => any;
+import { isArray, isObject } from "./type";
+import { TypeCallback, TypeCallbackArray, TypeCallbackObject, TypeObject } from "./typedef";
 
-export const forEach = (object: any, callback: forEachCallback, thisArg?: any) => {
+type EachCallback = TypeCallback<any, string | number, any, any>;
+
+type LoopCallback = (index: number, count: number) => any;
+
+export const forEachIndex = <T>(array: Array<T>, callback: TypeCallbackArray<T>, thisArg?: any): Array<T> => {
+
+  const length = array.length;
+
+  for (let index = 0; index <= length; index++) {
+
+    if (callback.call(thisArg, array[index], index, array) === false) {
+
+      break;
+    }
+  }
+
+  return array;
+}
+
+export const forEachKey = <T>(object: TypeObject<T>, callback: TypeCallbackObject<T>, thisArg?: any): TypeObject<T> => {
 
   const keys = Object.keys(object);
 
@@ -17,7 +35,22 @@ export const forEach = (object: any, callback: forEachCallback, thisArg?: any) =
   return object;
 }
 
-export const forLoop = (count: number, callback: forLoopCallback, thisArg?: any) => {
+export const each = (object: any, callback: EachCallback, thisArg?: any): any => {
+
+  if (isArray(object)) {
+
+    return forEachIndex(object, callback, thisArg);
+  }
+
+  if (isObject(object)) {
+
+    return forEachKey(object, callback, thisArg);
+  }
+
+  return null;
+}
+
+export const loop = (count: number, callback: LoopCallback, thisArg?: any) => {
 
   for (let index = 1; index <= count; index++) {
 
@@ -30,7 +63,7 @@ export const forLoop = (count: number, callback: forLoopCallback, thisArg?: any)
   return count;
 }
 
-export const forMap = (object: any, callback: forMapCallback, thisArg?: any): any => {
+export const map = <T>(object: TypeObject<T>, callback: TypeCallbackObject<T>, thisArg?: any): TypeObject<T> => {
 
   const keys = Object.keys(object);
 

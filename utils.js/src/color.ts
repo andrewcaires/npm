@@ -4,5 +4,5 @@ const parse = (color: string, percent: number): string => between(parseInt(color
 
 export const shadeColor = (color: string, percent: number): string => {
 
-  return "#" + color.replace(/^#/, "").replace(/../g, (color) => ("0" + parse(color, percent)).substr(-2));
+  return "#" + color.replace(/^#/, "").replace(/../g, (color) => ("0" + parse(color, percent)).slice(-2));
 }

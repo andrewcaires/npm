@@ -12,7 +12,4 @@ export const chunkArray = <T>(array: Array<T>, length: number = 1): Array<Array<
   return result;
 }
 
-export const toArray = (value: any): Array<any> => {
-
-  return isArray(value) ? value : isDef(value) ? [value] : [];
-}
+export const toArray = (value: any): Array<any> => isArray(value) ? value : isDef(value) ? [value] : [];

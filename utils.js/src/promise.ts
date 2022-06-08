@@ -1,18 +1,17 @@
-type forEachCallback<T> = (value: T, index: number, arr: Array<T>) => Promise<void>;
+import { TypeCallback } from "./typedef";
 
-export const forEachAsync = async <T>(arr: Array<T>, callback: forEachCallback<T>, thisArg?: any): Promise<void> => {
+type ForEachCallback<T> = TypeCallback<T, number, Array<T>, Promise<void>>;
 
-  await Promise.all(arr.map((value, index) => {
+export const forEachAsync = async <T>(array: Array<T>, callback: ForEachCallback<T>, thisArg?: any): Promise<void> => {
 
-    return callback.call(thisArg || null, value, index, arr);
-  }));
+  await Promise.all(array.map((value, index) => callback.call(thisArg, value, index, array)));
 }
 
-export const forEachSeries = async <T>(arr: Array<T>, callback: forEachCallback<T>, thisArg?: any): Promise<void> => {
+export const forEachSeries = async <T>(array: Array<T>, callback: ForEachCallback<T>, thisArg?: any): Promise<void> => {
 
-  for (let index = 0; index < arr.length; index++) {
+  for (let index = 0; index < array.length; index++) {
 
-    await callback.call(thisArg || null, arr[index], index, arr);
+    await callback.call(thisArg, array[index], index, array);
   }
 }
 
