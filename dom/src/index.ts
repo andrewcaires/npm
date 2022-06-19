@@ -176,6 +176,11 @@ export class Dom {
     });
   }
 
+  appendTo(selector: DomSelector) {
+    const list = new Dom(selector);
+    return list.append(this), this;
+  }
+
   children() {
     const elems: DomList = [];
     this.forEach((elem) => {
@@ -227,6 +232,11 @@ export class Dom {
         });
       }
     });
+  }
+
+  prependTo(selector: DomSelector) {
+    const list = new Dom(selector);
+    return list.prepend(this), this;
   }
 
   prop(name: string, value?: string): Dom | string | null {
