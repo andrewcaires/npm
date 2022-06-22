@@ -1,5 +1,14 @@
 type replaceCallback = (text: string) => string;
 
+export const cutText = (text: string, length: number) => {
+  if (text.length > length) {
+    const words = text.substring(0, length).split(" ");
+    words.pop();
+    return words.join(" ") + "...";
+  }
+  return text;
+}
+
 const replace = (text: string, callback: replaceCallback): string => {
 
   return callback(text.toLowerCase().replace(/\W+/g, " ")).replace(/\s/g, "");
