@@ -1,0 +1,40 @@
+@mixin direction($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}direction-column {
+    flex-direction: column !important;
+  }
+
+  .#{$class}direction-row {
+    flex-direction: row !important;
+  }
+
+  .#{$class}direction-column-reverse {
+    flex-direction: column-reverse !important;
+  }
+
+  .#{$class}direction-row-reverse {
+    flex-direction: row-reverse !important;
+  }
+}
+
+@include direction();
+
+@include sm {
+  @include direction("sm");
+}
+
+@include md {
+  @include direction("md");
+}
+
+@include lg {
+  @include direction("lg");
+}
+
+@include xl {
+  @include direction("xl");
+}

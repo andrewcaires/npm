@@ -1,0 +1,24 @@
+@function rem($values...) {
+
+  $result: ();
+
+  @each $value in $values {
+
+    @if $value==0 {
+
+      $result: append($result, 0);
+    }
+
+    @else if type-of($value)=="number" {
+
+      $result: append($result, calc($value / $font-size) * 1rem);
+    }
+
+    @else {
+
+      $result: append($result, $value);
+    }
+  }
+
+  @return $result;
+}

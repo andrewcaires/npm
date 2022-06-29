@@ -1,0 +1,32 @@
+@mixin wrap($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}wrap {
+    flex-wrap: wrap !important;
+  }
+
+  .#{$class}nowrap {
+    flex-wrap: nowrap !important;
+  }
+}
+
+@include wrap();
+
+@include sm {
+  @include wrap("sm");
+}
+
+@include md {
+  @include wrap("md");
+}
+
+@include lg {
+  @include wrap("lg");
+}
+
+@include xl {
+  @include wrap("xl");
+}

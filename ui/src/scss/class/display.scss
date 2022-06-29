@@ -1,0 +1,64 @@
+@mixin display($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}none {
+    display: none !important;
+  }
+
+  .#{$class}inline {
+    display: inline !important;
+  }
+
+  .#{$class}inline-block {
+    display: inline-block !important;
+  }
+
+  .#{$class}block {
+    display: block !important;
+  }
+
+  .#{$class}grid {
+    display: grid !important;
+  }
+
+  .#{$class}table {
+    display: table !important;
+  }
+
+  .#{$class}table-cell {
+    display: table-cell !important;
+  }
+
+  .#{$class}table-row {
+    display: table-row !important;
+  }
+
+  .#{$class}flex {
+    display: flex !important;
+  }
+
+  .#{$class}inline-flex {
+    display: inline-flex !important;
+  }
+}
+
+@include display();
+
+@include sm {
+  @include display("sm");
+}
+
+@include md {
+  @include display("md");
+}
+
+@include lg {
+  @include display("lg");
+}
+
+@include xl {
+  @include display("xl");
+}

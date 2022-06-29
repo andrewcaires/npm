@@ -1,0 +1,44 @@
+@mixin items($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}items-center {
+    align-items: center !important;
+  }
+
+  .#{$class}items-start {
+    align-items: flex-start !important;
+  }
+
+  .#{$class}items-end {
+    align-items: flex-end !important;
+  }
+
+  .#{$class}items-stretch {
+    align-items: stretch !important;
+  }
+
+  .#{$class}items-baseline {
+    align-items: baseline !important;
+  }
+}
+
+@include items();
+
+@include sm {
+  @include items("sm");
+}
+
+@include md {
+  @include items("md");
+}
+
+@include lg {
+  @include items("lg");
+}
+
+@include xl {
+  @include items("xl");
+}

@@ -1,0 +1,52 @@
+@mixin width($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}w-a {
+    width: auto !important;
+  }
+
+  .#{$class}w-f {
+    width: 100% !important;
+  }
+
+  .#{$class}w-s {
+    width: 100vw !important;
+  }
+
+  .#{$class}w-0 {
+    width: 0 !important;
+  }
+
+  @for $index from 1 through $columns {
+    .#{$class}w-#{$index} {
+      @include rem("width", $index * $spacing-size,  !important);
+    }
+  }
+
+  @for $index from 2 through $columns {
+    .#{$class}w-#{50 * $index} {
+      @include rem("width", 50 * $index,  !important);
+    }
+  }
+}
+
+@include width();
+
+@include sm {
+  @include width("sm");
+}
+
+@include md {
+  @include width("md");
+}
+
+@include lg {
+  @include width("lg");
+}
+
+@include xl {
+  @include width("xl");
+}

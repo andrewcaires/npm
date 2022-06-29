@@ -1,0 +1,14 @@
+* {
+
+  .fade-in {
+    opacity: 1;
+    animation: app-animation-fade-in 1.5s;
+    animation-fill-mode: forwards;
+  }
+
+  .fade-out {
+    opacity: 0;
+    animation: app-animation-fade-out 1.5s;
+    animation-fill-mode: forwards;
+  }
+}

@@ -1,0 +1,38 @@
+@mixin col($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}c-a {
+    width: auto !important;
+  }
+
+  .#{$class}c-0 {
+    width: 0 !important;
+  }
+
+  @for $index from 1 through $columns {
+    .#{$class}c-#{$index} {
+      width: calc(100% / $columns) * $index  !important;
+    }
+  }
+}
+
+@include col();
+
+@include sm {
+  @include col("sm");
+}
+
+@include md {
+  @include col("md");
+}
+
+@include lg {
+  @include col("lg");
+}
+
+@include xl {
+  @include col("xl");
+}

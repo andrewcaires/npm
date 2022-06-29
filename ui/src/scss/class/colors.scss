@@ -1,0 +1,120 @@
+@mixin colors($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}bc-black {
+    border-color: $color-black;
+  }
+
+  .#{$class}bg-black {
+    background-color: $color-black;
+  }
+
+  .#{$class}cl-black {
+    color: $color-black;
+  }
+
+  .#{$class}bc-transparent {
+    border-color: transparent;
+  }
+
+  .#{$class}bg-transparent {
+    background-color: transparent;
+  }
+
+  .#{$class}cl-transparent {
+    color: transparent;
+  }
+
+  .#{$class}bc-white {
+    border-color: $color-white;
+  }
+
+  .#{$class}bg-white {
+    background-color: $color-white;
+  }
+
+  .#{$class}cl-white {
+    color: $color-white;
+  }
+
+  @each $name,
+  $color in $colors {
+
+    .#{$class}bc-#{$name} {
+      border-color: $color;
+    }
+
+    .#{$class}bg-#{$name} {
+      background-color: $color;
+    }
+
+    .#{$class}cl-#{$name} {
+      color: $color;
+    }
+
+    .#{$class}bc-#{$name}-50 {
+      border-color: color($color, 95%);
+    }
+
+    .#{$class}bg-#{$name}-50 {
+      background-color: color($color, 95%);
+    }
+
+    .#{$class}cl-#{$name}-50 {
+      color: color($color, 95%);
+    }
+
+    $index: 0;
+
+    @each $variant in $variants {
+      $index: $index +1;
+
+      .#{$class}bc-#{$name}-#{$index * 100} {
+        border-color: color($color, $variant);
+      }
+
+      .#{$class}bg-#{$name}-#{$index * 100} {
+        background-color: color($color, $variant);
+      }
+
+      .#{$class}cl-#{$name}-#{$index * 100} {
+        color: color($color, $variant);
+      }
+    }
+  }
+
+  @for $index from 1 through 19 {
+    .#{$class}bc-neutral-#{$index * 50} {
+      border-color: color($color-white, (5% * $index) * -1);
+    }
+
+    .#{$class}bg-neutral-#{$index * 50} {
+      background-color: color($color-white, (5% * $index) * -1);
+    }
+
+    .#{$class}cl-neutral-#{$index * 50} {
+      color: color($color-white, (5% * $index) * -1);
+    }
+  }
+}
+
+@include colors();
+
+@include sm {
+  @include colors("sm");
+}
+
+@include md {
+  @include colors("md");
+}
+
+@include lg {
+  @include colors("lg");
+}
+
+@include xl {
+  @include colors("xl");
+}

@@ -1,0 +1,52 @@
+@mixin offset($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}ol-a {
+    margin-left: auto !important;
+  }
+
+  .#{$class}ol-0 {
+    margin-left: 0 !important;
+  }
+
+  @for $index from 1 through $columns {
+    .#{$class}ol-#{$index} {
+      margin-left: calc(100% / $columns) * $index  !important;
+    }
+  }
+
+  .#{$class}or-a {
+    margin-right: auto !important;
+  }
+
+  .#{$class}or-0 {
+    margin-right: 0 !important;
+  }
+
+  @for $index from 1 through $columns {
+    .#{$class}or-#{$index} {
+      margin-right: calc(100% / $columns) * $index  !important;
+    }
+  }
+}
+
+@include offset();
+
+@include sm {
+  @include offset("sm");
+}
+
+@include md {
+  @include offset("md");
+}
+
+@include lg {
+  @include offset("lg");
+}
+
+@include xl {
+  @include offset("xl");
+}

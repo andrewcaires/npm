@@ -1,0 +1,22 @@
+@function color($color, $percentage) {
+
+  @if $percentage == 0% {
+
+    @return $color;
+  }
+
+  @if $percentage > 0% {
+
+    @return mix(#FFFFFF, $color, $percentage);
+  }
+
+  @if $percentage < 0% {
+
+    @return mix(#000000, $color, $percentage * -1);
+  }
+
+  @else {
+
+    @return $color;
+  }
+}

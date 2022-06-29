@@ -1,0 +1,52 @@
+@mixin align($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}align-center {
+    align-content: center !important;
+  }
+
+  .#{$class}align-start {
+    align-content: flex-start !important;
+  }
+
+  .#{$class}align-end {
+    align-content: flex-end !important;
+  }
+
+  .#{$class}align-between {
+    align-content: space-between !important;
+  }
+
+  .#{$class}align-around {
+    align-content: space-around !important;
+  }
+
+  .#{$class}align-evenly {
+    align-content: space-evenly !important;
+  }
+
+  .#{$class}align-stretch {
+    align-content: stretch !important;
+  }
+}
+
+@include align();
+
+@include sm {
+  @include align("sm");
+}
+
+@include md {
+  @include align("md");
+}
+
+@include lg {
+  @include align("lg");
+}
+
+@include xl {
+  @include align("xl");
+}

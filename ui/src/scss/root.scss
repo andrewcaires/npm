@@ -1,0 +1,130 @@
+html {
+  @include rem("font-size", $font-size);
+}
+
+body {
+  @extend html;
+  background-color: darken($color-white, 2%);
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  @include rem("font-size", 14);
+  line-height: 1.5;
+}
+
+* {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  outline: none;
+  padding: 0;
+
+  &,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+  }
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  background-color: transparent;
+  background-image: none;
+}
+
+embed,
+img,
+picture,
+video {
+  max-width: 100%;
+}
+
+img {
+  vertical-align: middle;
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+}
+
+li,
+ul {
+  list-style: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 500;
+  line-height: 1.2;
+  @include rem("margin", 10, 0);
+}
+
+.h1 {
+  @include rem("font-size", 35);
+}
+
+.h2 {
+  @include rem("font-size", 28);
+}
+
+.h3 {
+  @include rem("font-size", 25);
+}
+
+.h4 {
+  @include rem("font-size", 21);
+}
+
+.h5 {
+  @include rem("font-size", 18);
+}
+
+.h6 {
+  @include rem("font-size", 14);
+}
+
+pre {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+:disabled,
+[disabled] {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
+
+::-moz-selection {
+  background-color: rgba($color-black, 0.5);
+  color: $color-white;
+}
+
+::selection {
+  background-color: rgba($color-black, 0.5);
+  color: $color-white;
+}
+
+::-webkit-scrollbar {
+  @include rem("height", 10);
+  @include rem("width", 10);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba($color-black, 0.25);
+  @include rem("border-radius", 3);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba($color-black, 0.05);
+}

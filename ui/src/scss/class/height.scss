@@ -1,0 +1,52 @@
+@mixin height($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}h-a {
+    height: auto !important;
+  }
+
+  .#{$class}h-f {
+    height: 100% !important;
+  }
+
+  .#{$class}h-s {
+    height: 100vh !important;
+  }
+
+  .#{$class}h-0 {
+    height: 0 !important;
+  }
+
+  @for $index from 1 through $columns {
+    .#{$class}h-#{$index} {
+      @include rem("height", $index * $spacing-size,  !important);
+    }
+  }
+
+  @for $index from 2 through $columns {
+    .#{$class}h-#{50 * $index} {
+      @include rem("height", 50 * $index,  !important);
+    }
+  }
+}
+
+@include height();
+
+@include sm {
+  @include height("sm");
+}
+
+@include md {
+  @include height("md");
+}
+
+@include lg {
+  @include height("lg");
+}
+
+@include xl {
+  @include height("xl");
+}

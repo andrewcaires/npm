@@ -1,0 +1,51 @@
+@mixin padding($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  @for $index from 0 through $through {
+
+    .#{$class}p-#{$index} {
+      @include rem("padding", $index * $spacing-size,  !important);
+    }
+
+    .#{$class}pt-#{$index},
+    .#{$class}py-#{$index} {
+      @include rem("padding-top", $index * $spacing-size,  !important);
+    }
+
+    .#{$class}pb-#{$index},
+    .#{$class}py-#{$index} {
+      @include rem("padding-bottom", $index * $spacing-size,  !important);
+    }
+
+    .#{$class}pl-#{$index},
+    .#{$class}px-#{$index} {
+      @include rem("padding-left", $index * $spacing-size,  !important);
+    }
+
+    .#{$class}pr-#{$index},
+    .#{$class}px-#{$index} {
+      @include rem("padding-right", $index * $spacing-size,  !important);
+    }
+  }
+}
+
+@include padding();
+
+@include sm {
+  @include padding("sm");
+}
+
+@include md {
+  @include padding("md");
+}
+
+@include lg {
+  @include padding("lg");
+}
+
+@include xl {
+  @include padding("xl");
+}

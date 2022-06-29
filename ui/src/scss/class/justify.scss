@@ -1,0 +1,48 @@
+@mixin justify($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}justify-center {
+    justify-content: center !important;
+  }
+
+  .#{$class}justify-end {
+    justify-content: flex-end !important;
+  }
+
+  .#{$class}justify-start {
+    justify-content: flex-start !important;
+  }
+
+  .#{$class}justify-around {
+    justify-content: space-around !important;
+  }
+
+  .#{$class}justify-between {
+    justify-content: space-between !important;
+  }
+
+  .#{$class}justify-evenly {
+    justify-content: space-evenly !important;
+  }
+}
+
+@include justify();
+
+@include sm {
+  @include justify("sm");
+}
+
+@include md {
+  @include justify("md");
+}
+
+@include lg {
+  @include justify("lg");
+}
+
+@include xl {
+  @include justify("xl");
+}

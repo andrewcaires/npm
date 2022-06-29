@@ -1,0 +1,60 @@
+* {
+
+  >.intro-x,
+  >.-intro-x,
+  >.intro-y,
+  >.-intro-y {
+    opacity: 0;
+    position: relative;
+  }
+
+  >.intro-x,
+  >.-intro-x {
+    animation: 0.4s app-animation-intro-x ease-in-out 0.33333s;
+    animation-fill-mode: forwards;
+  }
+
+  >.intro-x {
+    transform: translateX(50px);
+  }
+
+  >.-intro-x {
+    transform: translateX(-50px);
+  }
+
+  >.intro-y,
+  >.-intro-y {
+    animation: 0.4s app-animation-intro-y ease-in-out 0.33333s;
+    animation-fill-mode: forwards;
+  }
+
+  >.intro-y {
+    transform: translateY(50px);
+  }
+
+  >.-intro-y {
+    transform: translateY(-50px);
+  }
+
+  @for $index from 1 through 100 {
+    >.intro-x:nth-child(#{$index}) {
+      animation-delay: calc($index * 0.1s);
+      z-index: calc(100 - $index);
+    }
+
+    >.-intro-x:nth-child(#{$index}) {
+      animation-delay: calc($index * 0.1s);
+      z-index: calc(100 - $index);
+    }
+
+    >.intro-y:nth-child(#{$index}) {
+      animation-delay: calc($index * 0.1s);
+      z-index: calc(100 - $index);
+    }
+
+    >.-intro-y:nth-child(#{$index}) {
+      animation-delay: calc($index * 0.1s);
+      z-index: calc(100 - $index);
+    }
+  }
+}

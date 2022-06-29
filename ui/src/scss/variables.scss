@@ -1,0 +1,46 @@
+$colors: (
+    "aqua": #00FFFF,
+    "blue": #0000FF,
+    "green": #00FF00,
+    "indigo": #4B0082,
+    "lime": #ADFF2F,
+    "red": #FF0000,
+
+    "primary": #3f51b5,
+    "secondary": #e3e7ec,
+    "success": #4caf50,
+    "info": #03a9f4,
+    "warning": #ffc700,
+    "danger": #f41f0f,
+    "pending": #ff8422,
+    "dark": #1e293b) !default;
+
+$variants: 80%,
+    60%,
+    40%,
+    20%,
+    0%,
+    -20%,
+    -40%,
+    -60%,
+    -80% !default;
+
+$rem-only: true !default;
+
+$columns: 24 !default;
+$spacing: 10 !default;
+$through: 20 !default;
+
+$spacing-size: 4 !default;
+
+$color-black: #000000 !default;
+$color-blue: #0d6efd !default;
+$color-red: #dc3545 !default;
+$color-white: #ffffff !default;
+
+$font-size: 16 !default;
+
+$width-sm: 520px !default;
+$width-md: 768px !default;
+$width-lg: 980px !default;
+$width-xl: 1140px !default;

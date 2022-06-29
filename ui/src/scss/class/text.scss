@@ -1,0 +1,36 @@
+@mixin text($class: "") {
+
+  @if $class  !="" {
+    $class: "#{$class}\\:";
+  }
+
+  .#{$class}text-center {
+    text-align: center !important;
+  }
+
+  .#{$class}text-left {
+    text-align: left !important;
+  }
+
+  .#{$class}text-right {
+    text-align: right !important;
+  }
+}
+
+@include text();
+
+@include sm {
+  @include text("sm");
+}
+
+@include md {
+  @include text("md");
+}
+
+@include lg {
+  @include text("lg");
+}
+
+@include xl {
+  @include text("xl");
+}
