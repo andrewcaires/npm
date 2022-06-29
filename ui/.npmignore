@@ -1,0 +1,29 @@
+# system
+.DS_Store
+Thumbs.db
+
+# directories
+build
+node_modules
+
+# environment
+.env
+
+# npm
+.npm
+package-lock.json
+
+# vscode
+.vscode
+
+# Typescript
+tsconfig.json
+
+# Vite
+public
+index.html
+tsconfig.node.json
+vite.config.ts
+
+# ESLint
+.eslintrc.json
