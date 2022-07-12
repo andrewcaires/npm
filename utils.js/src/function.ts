@@ -7,9 +7,7 @@ type LoopCallback = (index: number, count: number) => any;
 
 export const forEachIndex = <T>(array: Array<T>, callback: TypeCallbackArray<T>, thisArg?: any): Array<T> => {
 
-  const length = array.length;
-
-  for (let index = 0; index <= length; index++) {
+  for (let index = 0; index < array.length; index++) {
 
     if (callback.call(thisArg, array[index], index, array) === false) {
 
@@ -22,9 +20,13 @@ export const forEachIndex = <T>(array: Array<T>, callback: TypeCallbackArray<T>,
 
 export const forEachKey = <T>(object: TypeObject<T>, callback: TypeCallbackObject<T>, thisArg?: any): TypeObject<T> => {
 
+  let key = "";
+
   const keys = Object.keys(object);
 
-  for (let key in keys) {
+  for (let index = 0; index < keys.length; index++) {
+
+    key = keys[index];
 
     if (callback.call(thisArg, object[key], key, object) === false) {
 
@@ -65,9 +67,13 @@ export const loop = (count: number, callback: LoopCallback, thisArg?: any) => {
 
 export const map = <T>(object: TypeObject<T>, callback: TypeCallbackObject<T>, thisArg?: any): TypeObject<T> => {
 
+  let key = "";
+
   const keys = Object.keys(object);
 
-  for (let key in keys) {
+  for (let index = 0; index < keys.length; index++) {
+
+    key = keys[index];
 
     object[key] = callback.call(thisArg, object[key], key, object);
   }
