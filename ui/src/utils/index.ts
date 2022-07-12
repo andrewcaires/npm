@@ -4,15 +4,16 @@ import { Module, useStore } from "vuex";
 
 type TypeObjectProps = TypeObject<any>;
 
-export const columns = (props: TypeObjectProps) => {
-  const { cols, sm, md, lg, xl } = toRefs(props);
+export const columns = (props: TypeObjectProps, key: string = "") => {
+  key = key != "" ? key : "c-";
+  const { col, sm, md, lg, xl } = toRefs(props);
   return computed(() => {
     return {
-      ["sm:c-" + sm.value]: sm && sm.value,
-      ["md:c-" + md.value]: md && md.value,
-      ["lg:c-" + lg.value]: lg && lg.value,
-      ["xl:c-" + xl.value]: xl && xl.value,
-      ["c-" + cols.value]: cols && cols.value,
+      [key + col.value]: col && col.value,
+      ["sm:" + key + sm.value]: sm && sm.value,
+      ["md:" + key + md.value]: md && md.value,
+      ["lg:" + key + lg.value]: lg && lg.value,
+      ["xl:" + key + xl.value]: xl && xl.value,
     };
   });
 }
@@ -46,7 +47,7 @@ export const useSizeWidth = (props: TypeObjectProps): ComputedRef => {
 }
 
 export const useSizes = (props: TypeObjectProps, key: string = ""): ComputedRef => {
-  key = key != "" ? key + "--" : "";
+  key = key != "" ? key : "";
   const { small, medium, large, extra } = toRefs(props);
   return computed(() => {
     return {

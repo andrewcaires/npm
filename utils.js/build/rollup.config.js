@@ -39,7 +39,7 @@ export default [
     output: { file: pkg.types, format: "es" },
     plugins: [
       dts(),
-      { renderChunk: (code) => (rmSync("dist/types", { recursive: true, force: true }), code) },
+      { renderChunk: (code) => (rmSync("dist/types", { recursive: true, force: true }), banner + code) },
     ]
   }
 ];
