@@ -2,8 +2,7 @@ import { Router } from "express";
 
 import { add, all, del, get, groupsAll, groupsSet, set } from "../controllers/users";
 
-import { auth } from "../middlewares/auth";
-import { permission } from "../middlewares/permission";
+import { auth, permission } from "../middlewares";
 
 import { createValidation, groupsValidation, updateValidation } from "../validation/user";
 
@@ -29,4 +28,4 @@ router.route("/:id/groups")
 
   .put(permission("users.write"), groupsValidation, groupsSet);
 
-export default router;
+export { router as default };

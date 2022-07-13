@@ -1,11 +1,7 @@
 import { Request, Response } from "express";
 
 import { Group, GroupRoute, Route } from "../models";
-
-import { Log } from "../helpers/Log";
-import { Responses } from "../helpers/Responses";
-
-import { Controller } from "../helpers/Controller";
+import { Controller, Log, Responses } from "../utils";
 
 const controller = new Controller("groups", Group);
 const controller2 = new Controller("groups.route", GroupRoute);

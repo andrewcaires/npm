@@ -2,8 +2,8 @@ import { noop } from "@andrewcaires/utils.js";
 import { Request, Response } from "express";
 import { Attributes, FindOptions, Model, ModelStatic, Op } from "sequelize";
 
-import { Log } from "../helpers/Log";
-import { Responses } from "../helpers/Responses";
+import { Log } from "./Log";
+import { Responses } from "./Responses";
 
 type FnRecord<M> = (records: M) => any;
 type FnRecords<M> = (records: Array<M>) => Array<any>;
@@ -86,7 +86,10 @@ export class Controller<M extends Model<M>> {
 
         Object.keys(this.model.getAttributes()).forEach((value) => {
 
-          likes.push({ [value]: { [Op.like]: `%${search}%` } });
+          if (value != "password") {
+
+            likes.push({ [value]: { [Op.like]: `%${search}%` } });
+          }
         });
 
         if (likes.length) {

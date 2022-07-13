@@ -1,16 +1,10 @@
 import { allowedObject, uniqueID, sleep } from "@andrewcaires/utils.js";
 import { SHA256 } from "crypto-js";
-import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 
-import { Auth, User } from "../models";
-
-import { Log } from "../helpers/Log";
-import { Responses } from "../helpers/Responses";
-
 import { API_AUTH_SLEEP, API_TOKEN_LIFETIME } from "../config";
-import { key } from "../ssl";
-import { Permission } from "../helpers/Permission";
+import { Auth, User } from "../models";
+import { Log, Permission, Responses, Token } from "../utils";
 
 const attributes = ["id", "name", "email", "username"];
 
@@ -36,12 +30,12 @@ export const login = async (req: Request, res: Response) => {
 
   if (!user) {
 
-    return Responses.notfound(res, "User not found");
+    return Responses.notfound(res, "Username not found");
   }
 
   if (!user.state) {
 
-    return Responses.error(res, "User is disabled");
+    return Responses.error(res, "Username is disabled");
   }
 
   const hash = SHA256(password).toString();
@@ -51,15 +45,15 @@ export const login = async (req: Request, res: Response) => {
     return Responses.error(res, "Invalid password");
   }
 
-  if (!key.token) {
-
-    return Responses.error(res, "Invalid Secret");
-  }
-
   const id = user.id;
   const secret = uniqueID();
 
-  const token = jwt.sign({ id, secret }, key.token, { algorithm: "RS256" });
+  const { error, token } = Token.sign({ id, secret });
+
+  if (error) {
+
+    return Responses.error(res, error);
+  }
 
   if (token) {
 

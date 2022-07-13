@@ -5,9 +5,8 @@ import mime from "mime-types";
 import multer from "multer";
 import { join } from "path";
 
-import { Responses } from "../helpers/Responses";
-
 import { API_UPLOAD_COUNT, API_UPLOAD_FIELD, API_UPLOAD_SIZE, API_UPLOAD_TEMP } from "../config";
+import { Responses } from "../utils";
 
 interface UploadOptions {
   count?: number;

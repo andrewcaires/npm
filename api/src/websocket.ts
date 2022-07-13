@@ -4,8 +4,7 @@ import WebSocket from "ws";
 
 import { API_WEBSOCKET_START } from "./config";
 import { User } from "./models";
-
-import { Log } from "./helpers/Log";
+import { Log, Token } from "./utils";
 
 interface WebSocketEvent {
 
@@ -37,7 +36,7 @@ export const startSocket = (server: http.Server | https.Server): WebSocket.Serve
 
     let user: User;
 
-    ws.on("message", (message: string) => {
+    ws.on("message", async (message: string) => {
 
       if (user) {
 
@@ -45,17 +44,14 @@ export const startSocket = (server: http.Server | https.Server): WebSocket.Serve
 
       } else {
 
-        // Token.check(message.toString()).then((token) => {
+        const { decode } = Token.verify(message.toString());
 
-        //   if (!token.user) {
+        if (decode) {
+
+          // return;
+        }
 
         ws.close();
-
-        //   } else {
-
-        //     user = token.user;
-        //   }
-        // });
       }
     });
 

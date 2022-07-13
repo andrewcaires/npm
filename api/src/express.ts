@@ -1,12 +1,10 @@
 import cors from "cors";
-import express, { Request, Response, NextFunction } from "express";
+import express, { NextFunction, Request, Response, Router } from "express";
 import { existsSync } from "fs";
 
 import { API_HTTP_CROSS, API_HTTP_PUBLIC } from "./config";
-import { router } from "./router";
-
-import { Log } from "./helpers/Log";
-import { Responses } from "./helpers/Responses";
+import { router as routes } from "./routes";
+import { Log, Responses } from "./utils";
 
 export const app = express();
 
@@ -33,9 +31,13 @@ if (API_HTTP_CROSS) {
   app.use(cors());
 }
 
+export const router = Router();
+
 app.use("/api", router);
 
-app.all("/api/*", (req: express.Request, res: express.Response) => {
+app.use("/api", routes);
+
+app.all("/api/*", (req: Request, res: Response) => {
 
   return Responses.notfound(res, "Invalid API");
 });
@@ -47,7 +49,7 @@ if (API_HTTP_PUBLIC) {
     app.use(express.static(API_HTTP_PUBLIC));
   }
 
-  app.get("*", (req: express.Request, res: express.Response) => {
+  app.get("*", (req: Request, res: Response) => {
 
     if (!existsSync(API_HTTP_PUBLIC)) {
 

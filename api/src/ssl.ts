@@ -10,12 +10,6 @@ const getFile = (file: string): Buffer | undefined => {
   }
 };
 
-export const crt = {
-  http: getFile(API_HTTP_CRT),
-  token: getFile(API_TOKEN_CRT),
-};
+export const crt = { http: getFile(API_HTTP_CRT), token: getFile(API_TOKEN_CRT) };
 
-export const key = {
-  http: getFile(API_HTTP_KEY),
-  token: getFile(API_TOKEN_KEY),
-};
+export const key = { http: getFile(API_HTTP_KEY), token: getFile(API_TOKEN_KEY) };

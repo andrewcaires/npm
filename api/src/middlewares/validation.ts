@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { ObjectSchema } from "joi";
 
-import { Responses } from "../helpers/Responses";
+import { Responses } from "../utils";
 
 interface CustomError {
   key: string;

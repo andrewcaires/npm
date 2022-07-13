@@ -1,6 +1,6 @@
 import { Route } from "../models";
 
-import { Controller } from "../helpers/Controller";
+import { Controller } from "../utils";
 
 const controller = new Controller("route", Route);
 

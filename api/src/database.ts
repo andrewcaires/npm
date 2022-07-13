@@ -1,4 +1,5 @@
 import { forEachSeries } from "@andrewcaires/utils.js";
+
 import { Group, GroupRoute, Route, User, UserGroup } from "./models";
 
 export const setup = async () => {
@@ -7,24 +8,21 @@ export const setup = async () => {
 
   if (users == 0) {
 
+    const data = { description: "", state: true };
+
     const user = await User.create({
       name: "Admin",
       email: "admin@localhost",
       username: "admin",
       password: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
-      description: "",
-      state: true,
+      ...data,
     });
 
     const groups = await Group.count();
 
     if (groups == 0) {
 
-      const group = await Group.create({
-        name: "admin",
-        description: "",
-        state: true,
-      });
+      const group = await Group.create({ name: "admin", ...data });
 
       await UserGroup.create({ userId: user.id, groupId: group.id });
 
@@ -36,17 +34,21 @@ export const setup = async () => {
 
         const models = ["users", "groups", "permission"];
 
-        forEachSeries(models, async (model) => {
+        await forEachSeries(models, async (model) => {
 
-          forEachSeries(permissions, async (permission) => {
+          await forEachSeries(permissions, async (permission) => {
 
-            const name = model.toLowerCase() + "." + permission.toLowerCase();
+            const name = model + "." + permission;
 
-            const record = await Route.create({ name, description: "", state: true });
+            const record = await Route.create({ name, ...data });
 
             await GroupRoute.create({ groupId: group.id, routeId: record.id });
           });
         });
+
+        const record = await Route.create({ name: "logs.read", ...data });
+
+        await GroupRoute.create({ groupId: group.id, routeId: record.id });
       }
     }
   }

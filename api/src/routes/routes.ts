@@ -2,8 +2,7 @@ import { Router } from "express";
 
 import { add, all, del, get, set } from "../controllers/routes";
 
-import { auth } from "../middlewares/auth";
-import { permission } from "../middlewares/permission";
+import { auth, permission } from "../middlewares";
 
 import { createValidation, updateValidation } from "../validation/routes";
 
@@ -23,4 +22,4 @@ router.route("/:id")
 
   .delete(permission("routes.write"), del);
 
-export default router;
+export { router as default };

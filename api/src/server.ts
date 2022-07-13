@@ -4,8 +4,7 @@ import { Server, Socket } from "net";
 
 import { API_HTTP_PORT, API_HTTP_HYBRID } from "./config";
 import { crt, key } from "./ssl";
-
-import { Log } from "./helpers/Log";
+import { Log } from "./utils";
 
 export const createServer = (handle: http.RequestListener): http.Server | https.Server => {
 

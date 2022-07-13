@@ -11,5 +11,5 @@ export const all = async (req: Request, res: Response) => {
 
   const where = source && type ? { source, type } : source ? { source } : type ? { type } : {};
 
-  return controller.all({ where })(req, res);
+  return controller.all({ where, order: [["created", "DESC"]] })(req, res);
 };

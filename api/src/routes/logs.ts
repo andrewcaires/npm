@@ -10,4 +10,4 @@ router.use(auth);
 
 router.get("/", permission("logs.read"), all);
 
-export default router;
+export { router as default };

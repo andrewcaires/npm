@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { login, logout, user } from "../controllers/auth";
 
-import { auth } from "../middlewares/auth";
+import { auth } from "../middlewares";
 
 import { queryValidation } from "../validation/auth";
 
@@ -14,4 +14,4 @@ router.post("/login", queryValidation, login);
 
 router.get("/logout", auth, logout);
 
-export default router;
+export { router as default };

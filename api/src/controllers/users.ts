@@ -2,10 +2,7 @@ import { SHA256 } from "crypto-js";
 import { Request, Response } from "express";
 
 import { Group, User, UserGroup } from "../models";
-
-import { Controller } from "../helpers/Controller";
-import { Log } from "../helpers/Log";
-import { Responses } from "../helpers/Responses";
+import { Controller, Log, Responses } from "../utils";
 
 const controller = new Controller("user", User);
 const controller2 = new Controller("user.groups", UserGroup);

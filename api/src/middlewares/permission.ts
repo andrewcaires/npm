@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { Permission } from "../helpers/Permission";
-import { Responses } from "../helpers/Responses";
+import { Permission, Responses } from "../utils";
 
 export const permission = (name: string) => {
 
