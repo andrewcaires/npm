@@ -1,4 +1,4 @@
-import { EventEmitter, isDef, isString } from "@andrewcaires/utils.js";
+import { EventEmitter, forEachKey, isString, isUndefined } from "@andrewcaires/utils.js";
 
 export interface FetchOptions {
   url?: string;
@@ -39,11 +39,6 @@ export interface FetchResponse {
   raw?: Response;
 }
 
-const DefaultOptions: FetchOptions = {
-  headers: {},
-  timeout: 5000,
-};
-
 export class Fetch extends EventEmitter {
 
   private _options: FetchOptions;
@@ -52,11 +47,7 @@ export class Fetch extends EventEmitter {
 
     super();
 
-    this._options = { ...DefaultOptions, ...options };
-  }
-
-  create(options: FetchOptions = {}) {
-    return new Fetch({ ...this._options, ...options });
+    this._options = { headers: {}, timeout: 5000, ...options };
   }
 
   async delete(path: string, query?: FetchQuery): Promise<FetchResponse> {
@@ -147,25 +138,9 @@ export class Fetch extends EventEmitter {
     return { ...this._options.headers, ...headers };
   }
 
-  private _query(query?: FetchQuery): string | undefined {
-
-    const keys = Object.keys(query || {});
-
-    const params = new URLSearchParams();
-
-    if (query) {
-
-      keys.forEach((key) => params.set(key, query[key]));
-    }
-
-    return keys.length ? "?" + params.toString() : undefined
-  }
-
   private _request({ url, path, query, method, body, headers, timeout }: FetchInit): FetchRequest {
 
-    const params = this._query(query);
-
-    url = this._url(url, path, params);
+    url = this._url(url, path, query);
 
     method = method.toUpperCase();
 
@@ -187,23 +162,29 @@ export class Fetch extends EventEmitter {
 
     const controller = new AbortController;
 
-    if (timeout || this._options.timeout) {
+    if (isUndefined(timeout)) {
 
-      setTimeout(() => controller.abort(), timeout || this._options.timeout);
+      timeout = this._options.timeout;
+    }
+
+    if (timeout) {
+
+      setTimeout(() => controller.abort(), timeout);
     }
 
     return controller.signal;
   }
 
-  private _url(url?: string, path?: string, query?: string): string {
+  private _url(base?: string, path?: string, query?: FetchQuery): string {
 
-    url = url || this._options.url;
+    const url = new URL(path || "", base || this._options.url);
 
-    return [url, path, query].filter(isDef).map((value) => {
+    if (query) {
 
-      return value?.toString().replace(/(^\/+|\/+$)/mg, "");
+      forEachKey(query, (value, key) => url.searchParams.set(key, value));
+    }
 
-    }).join("/");
+    return url.toString();
   }
 }
 
